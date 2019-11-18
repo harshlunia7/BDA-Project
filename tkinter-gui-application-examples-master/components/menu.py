@@ -4,101 +4,102 @@
 from tkinter import Menu, messagebox
 
 class MainMenu:
-    """主界面菜单"""
+    """Main interface menu"""
 
     def __init__(self, master):
-        """初始化菜单"""
-        self.master = master # 上级
-        self.root = master.root # 主窗口
+        """Initialization menu"""
+        self.master = master # Superior
+        self.root = master.root # Main window
+
         self.init_menu()
 
     def init_menu(self):
-        """加载菜单"""
+        """Load menu"""
 
-        # 创建菜单栏
+        # Create a menu bar
         self.menubar = Menu(self.root)
 
-        # 将菜单栏添加到窗口
+        # Add a menu bar to the window
         self.root.config(menu=self.menubar)
 
-        # 文件下拉菜单
+        # File drop down menu
         filemenu = Menu(self.menubar, tearoff=0)
-        filemenu.add_command(label="新建", command=self.file_new)
-        filemenu.add_command(label="打开", command=self.file_open)
-        filemenu.add_command(label="保存", command=self.file_save)
-        filemenu.add_command(label="另存为", command=self.file_save)
+        filemenu.add_command(label="New", command=self.file_new)
+        filemenu.add_command(label="turn on", command=self.file_open)
+        filemenu.add_command(label="save", command=self.file_save)
+        filemenu.add_command(label="Save as", command=self.file_save)
         filemenu.add_separator()
-        filemenu.add_command(label="退出", command=self.root.quit)
+        filemenu.add_command(label="drop out", command=self.root.quit)
 
-        # 用户下拉菜单
+        # User drop down menu
         usermenu = Menu(self.menubar, tearoff=0)
-        usermenu.add_command(label="用户列表", command=self.master.open_user_list)
-        usermenu.add_command(label="用户添加", command=self.master.open_user_add)
-        usermenu.add_command(label="用户详情窗口", command=self.master.open_user_info)
+        usermenu.add_command(label="user list", command=self.master.open_user_list)
+        usermenu.add_command(label="User added", command=self.master.open_user_add)
+        usermenu.add_command(label="User details window", command=self.master.open_user_info)
 
-        # 文章下拉菜单
+        # Article drop-down menu
         articlemenu = Menu(self.menubar, tearoff=0)
-        articlemenu.add_command(label="文章查询", command=self.master.open_content_list)
-        articlemenu.add_command(label="文章添加", command=self.master.open_content_add)
-        articlemenu.add_command(label="文章统计", command=self.master.open_content_count)
+        articlemenu.add_command(label="Article query", command=self.master.open_content_list)
+        articlemenu.add_command(label="Article addition", command=self.master.open_content_add)
+        articlemenu.add_command(label="Article statistics", command=self.master.open_content_count)
 
-        # 数据下拉菜单
+        # Data drop down menu
         datamenu = Menu(self.menubar, tearoff=0)
-        datamenu.add_command(label="下载", command=self.master.open_download)
-        datamenu.add_command(label="上传", command=self.master.open_upload)
-        datamenu.add_command(label="同步", command=self.master.open_synchronize)
-        datamenu.add_command(label="备份", command=self.master.open_backup)
+        datamenu.add_command(label="download", command=self.master.open_download)
+        datamenu.add_command(label="Upload", command=self.master.open_upload)
+        datamenu.add_command(label="Synchronize", command=self.master.open_synchronize)
+        datamenu.add_command(label="Backup", command=self.master.open_backup)
 
-        # 窗口下拉菜单
+        # Window drop down menu
         window_menu = Menu(self.menubar)
-        window_menu.add_command(label="最大化")
-        window_menu.add_command(label="最小化")
+        window_menu.add_command(label="maximize")
+        window_menu.add_command(label="minimize")
         window_menu.add_separator()
-        window_menu.add_command(label="窗口置顶", command=self.master.window_to_top)
-        window_menu.add_command(label="取消置顶", command=self.master.window_not_top)
+        window_menu.add_command(label="Window top", command=self.master.window_to_top)
+        window_menu.add_command(label="Unpin", command=self.master.window_not_top)
         window_menu.add_separator()
-        window_menu.add_command(label="主界面", command=self.master.open_home)
-        window_menu.add_command(label="切换到: 用户")
-        window_menu.add_command(label="切换到: 文章列表")
+        window_menu.add_command(label="Main interface", command=self.master.open_home)
+        window_menu.add_command(label="Switch to: user")
+        window_menu.add_command(label="Switch to: Article list")
 
-        # 帮助下拉菜单
+        # Help drop down menu
         helpmenu = Menu(self.menubar, tearoff=0)
-        helpmenu.add_command(label="欢迎使用", command=self.help_about)
-        helpmenu.add_command(label="文档", command=self.help_about)
-        helpmenu.add_command(label="版权声明", command=self.help_about)
-        helpmenu.add_command(label="隐私声明", command=self.help_about)
+        helpmenu.add_command(label="welcome", command=self.help_about)
+        helpmenu.add_command(label="Document", command=self.help_about)
+        helpmenu.add_command(label="Copyright Notice", command=self.help_about)
+        helpmenu.add_command(label="Privacy statement", command=self.help_about)
         helpmenu.add_separator()
-        helpmenu.add_command(label="联系我们", command=self.master.open_ontact)
-        helpmenu.add_command(label="关于", command=self.master.open_about)
+        helpmenu.add_command(label="contact us", command=self.master.open_ontact)
+        helpmenu.add_command(label="on", command=self.master.open_about)
 
-        # 将下拉菜单加到菜单栏
-        self.menubar.add_cascade(label="文件", menu=filemenu)
-        self.menubar.add_cascade(label="用户", menu=usermenu)
-        self.menubar.add_cascade(label="文章", menu=articlemenu)
-        self.menubar.add_cascade(label="数据", menu=datamenu)
-        self.menubar.add_cascade(label="窗口", menu=window_menu)
-        self.menubar.add_cascade(label="帮助", menu=helpmenu)
+        # Add a drop-down menu to the menu bar
+        self.menubar.add_cascade(label="file", menu=filemenu)
+        self.menubar.add_cascade(label="user", menu=usermenu)
+        self.menubar.add_cascade(label="article", menu=articlemenu)
+        self.menubar.add_cascade(label="data", menu=datamenu)
+        self.menubar.add_cascade(label="window", menu=window_menu)
+        self.menubar.add_cascade(label="help", menu=helpmenu)
 
     def file_open(self):
-        messagebox.showinfo("打开", "文件-打开！")  # 消息提示框
+        messagebox.showinfo("turn on", "file-turn on！")  # Message prompt box
 
     def file_new(self):
-        messagebox.showinfo("新建", "文件-新建！")  # 消息提示框
+        messagebox.showinfo("New", "file-New！")  # Message prompt box
 
     def file_save(self):
-        messagebox.showinfo("保存", "文件-保存！")  # 消息提示框
+        messagebox.showinfo("save", "file-save！")  # Message prompt box
 
     def edit_cut(self):
-        messagebox.showinfo("剪切", "编辑-剪切！")  # 消息提示框
+        messagebox.showinfo("Cutting", "edit-Cutting！")  # Message prompt box
 
     def edit_copy(self):
-        messagebox.showinfo("复制", "编辑-复制！")  # 消息提示框
+        messagebox.showinfo("copy", "edit-copy！")  # Message prompt box
 
     def edit_paste(self):
-        messagebox.showinfo("粘贴", "编辑-粘贴！")  # 消息提示框
+        messagebox.showinfo("Paste", "edit-Paste！")  # Message prompt box
 
     def help_about(self):
-        """关于"""
+        """on"""
         messagebox.showinfo(
-            "关于", "作者: doudoudzj \n verion 1.0 \n 感谢您的使用！ \n doudoudzj@sina.com"
+            "on", "Author: doudoudzj \n verion 1.0 \n Thank you for your use！ \n doudoudzj@sina.com"
         )
