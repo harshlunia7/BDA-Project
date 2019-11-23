@@ -167,40 +167,93 @@ class myRead(Frame):
         self.entryCountry = StringVar()
         self.entryYear = StringVar()
         self.entryAge = StringVar()
+        self.suicides_no = StringVar()
+        self.population = StringVar()
+        self.suicidespop = StringVar()
+        self.countryyear = StringVar()
+        self.gdpforyear = StringVar()
+        self.gdppercapita = StringVar()
+        self.generation = StringVar()
         self.init_page()
 
+
     def readMyDatabase(self):
-        self.entrySex2 = self.entrySex.get()
-        self.entryAge2 = self.entryAge.get()
-        self.entryCountry2 = self.entryCountry.get()
-        self.entryYear2 = self.entryYear.get()
+        self.entrySex3 = self.entrySex.get()
+        self.entryCountry3 = self.entryCountry.get()
+        self.entryYear3 = self.entryYear.get()
+        self.entryAge3 = self.entryAge.get()
+        self.suicides_no3 = self.suicides_no.get()
+        self.population3 = self.population.get()
+        self.suicidespop3= self.suicidespop.get()
+        self.countryyear3 = self.countryyear.get()
+        self.gdpforyear3 = self.gdpforyear.get()
+        self.gdppercapita3 = self.gdppercapita.get()
+        self.generation3 = self.generation.get()
         file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py", "w")
         t = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'w'))\nw.writerow(['_id',	'country','year','sex','age','suicides_no','population','suicides/100kpop','country-year','gdp_for_year($)','gdp_per_capita','generation'])\nw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'a'))\nfor x in mycol.find({"
-        self.a = ""
+        a = ""
 
-        if self.entrySex2 != "-1":
-            if self.a != "":
-                self.a = self.a + ",'sex':'" + self.entrySex2 + "'"
-            else:
-                self.a = self.a + "'sex':'" + self.entrySex2 + "'"
+        if self.entryCountry3 != "-1":
+             if a != "":
+                a = a + ",'country':'" + self.entryCountry3 + "'"
+             else:
+                a = a + "'country':'" + self.entryCountry3 + "'"
 
-        if self.entryCountry2 != "-1":
-            if self.a != "":
-                self.a = self.a + ",'country':'" + self.entryCountry2 + "'"
-            else:
-                self.a = self.a + "'country':'" + self.entryCountry2 + "'"
-        if self.entryYear2 != "-1":
-            if self.a != "":
-                self.a = self.a + ",'year':" + self.entryYear2
-            else:
-                self.a = self.a + "'year':" + self.entryYear2
-        if self.entryAge2 != "-1":
-            if self.a != "":
-                self.a = self.a + ",'age':'" + self.entryAge2 + "'"
-            else:
-                self.a = self.a + "'age':'" + self.entryAge2 + "'"
+        if self.entryYear3 != "-1":
+             if a != "":
+                a = a + ",'year':" + self.entryYear3
+             else:
+                a = a + "'year':" + self.entryYear3
+        if self.entrySex3 != "-1":
+             if a != "":
+                a = a + ",'sex':'" + self.entrySex3 + "'"
+             else:
+                a = a + "'sex':'" + self.entrySex3 + "'"
 
-        t = t + self.a + "}):\n\ta=[]\n\tfor key,val in x.items():\n\t\ta.append(val)\n\tw.writerow(a)"
+
+        if self.entryAge3 != "-1":
+             if a != "":
+                a = a + ",'age':'" + self.entryAge3 + "'"
+             else:
+                a = a + "'age':'" + self.entryAge3 + "'"
+        if self.suicides_no3 != "-1":
+            if a != "":
+                a = a + ",'suicides_no':'" + self.suicides_no3 + "'"
+            else:
+                a = a + "'suicides_no':'" + self.suicides_no3 + "'"
+        if self.population3 != "-1":
+            if a != "":
+                a = a + ",'population':'" + self.population3 + "'"
+            else:
+                a = a + "'population':'" + self.population3 + "'"
+        if self.suicidespop3 != "-1":
+            if a != "":
+                a = a + ",'suicides/100k pop':'" + self.suicidespop3 + "'"
+            else:
+                a = a + "'suicides/100k pop':'" + self.suicidespop3 + "'"
+        if self.countryyear3 != "-1":
+            if a != "":
+                a = a + ",'country-year':'" + self.countryyear3 + "'"
+            else:
+                a = a + "'country-year':'" + self.countryyear3 + "'"
+        if self.gdpforyear3 != "-1":
+            if a != "":
+                a = a + ",'gdp_for_year ($)':'" + self.gdpforyear3 + "'"
+            else:
+                a = a + "'gdp_for_year ($)':'" + self.gdpforyear3 + "'"
+        if self.gdppercapita3 != "-1":
+            if a != "":
+                a = a + ",'gdp_per_capita ($)':'" + self.gdppercapita3 + "'"
+            else:
+                a = a + "'gdp_per_capita ($)':'" + self.gdppercapita3 + "'"
+
+        if self.generation3 != "-1":
+            if a != "":
+                a = a + ",'generation':'" + self.generation3 + "'"
+            else:
+                a = a + "'generation':'" + self.generation3 + "'"
+
+        t = t + a + "}):\n\ta=[]\n\tfor key,val in x.items():\n\t\ta.append(val)\n\tw.writerow(a)"
         file.write(t)
         file.close()
         os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py")
@@ -210,22 +263,50 @@ class myRead(Frame):
 
 
 
+
+
+
+
+
+
+
     def init_page(self):
+        Label(self).grid(row=0, stick="w", pady=10)
         Label(self, text='Sex').grid(row=0)
         Label(self, text='Country').grid(row=1)
         Label(self, text='Year').grid(row=2)
         Label(self, text='Age').grid(row=3)
-        e1 = Entry(self,textvariable = self.entrySex)
-        e2 = Entry(self,textvariable = self.entryCountry)
-        e3 = Entry(self,textvariable = self.entryYear)
-        e4 = Entry(self,textvariable = self.entryAge)
+        Label(self, text='SuicideNumber').grid(row=4)
+        Label(self, text='Population').grid(row=5)
+        Label(self,text = 'suicides/100k_pop').grid(row=6)
+        Label(self,text = 'country-year').grid(row=7)
+        Label(self,text = ' gdp_for_year ($) ').grid(row=8)
+        Label(self,text = 'gdp_per_capita ($)').grid(row=9)
+        Label(self,text = 'generation').grid(row=10)
+        button = tk.Button(self, text='Submit', width=25, command=self.readMyDatabase)
+        button.grid(row=11)
+        e1 = Entry(self, textvariable=self.entrySex)
+        e2 = Entry(self, textvariable=self.entryCountry)
+        e3 = Entry(self, textvariable=self.entryYear)
+        e4 = Entry(self, textvariable=self.entryAge)
+        e5 = Entry(self, textvariable=self.suicides_no)
+        e6 = Entry(self, textvariable=self.population)
+        e7 = Entry(self, textvariable=self.suicidespop)
+        e8 = Entry(self, textvariable=self.countryyear)
+        e9 = Entry(self, textvariable=self.gdpforyear)
+        e10 = Entry(self, textvariable=self.gdppercapita)
+        e11 = Entry(self, textvariable=self.generation)
         e1.grid(row=0, column=1)
         e2.grid(row=1, column=1)
         e3.grid(row=2, column=1)
         e4.grid(row=3, column=1)
-        button = tk.Button(self, text='Submit', width=25, command=self.readMyDatabase)
-        button.grid(row=4)
-
+        e5.grid(row=4, column=1)
+        e6.grid(row=5, column=1)
+        e7.grid(row=6, column=1)
+        e8.grid(row=7, column=1)
+        e9.grid(row=8, column=1)
+        e10.grid(row=9, column=1)
+        e11.grid(row=10, column=1)
 
 
 class myUpdate(Frame):
