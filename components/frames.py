@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
-
+import csv
+import tkinter
 import tkinter as tk
 import os
 from tkinter import *
+from tkinter.tix import *
 
 import lib.dbcontent as dbcontent
 from components.bdaRead2 import documentReturn
@@ -71,7 +73,7 @@ class myRead(Frame):
         self.entryCountry2 = self.entryCountry.get()
         self.entryYear2 = self.entryYear.get()
         file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py", "w")
-        t = "import pymongo\nimport csv\ndef documentReturn():\n\tprint('aa')\n\tmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\n\tmydb = myclient['suicideRate']\n\tmycol = mydb['suicideCollection']\n\tw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'a'))\n\tfor x in mycol.find({"
+        t = "import pymongo\nimport csv\ndef documentReturn():\n\tmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\n\tmydb = myclient['suicideRate']\n\tmycol = mydb['suicideCollection']\n\tw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'w'))\n\tw.writerow(['_id',	'country','year','sex','age','suicides_no','population','suicides/100kpop','country-year','gdp_for_year($)','gdp_per_capita','generation'])\n\tw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'a'))\n\tfor x in mycol.find({"
         self.a = ""
 
         if self.entrySex2 != "-1":
@@ -96,22 +98,18 @@ class myRead(Frame):
             else:
                 self.a = self.a + "'age':'" + self.entryAge2 + "'"
 
-        t = t + self.a + "}):\n\t\tprint(x)\n\t\tfor key,val in x.items():\n\t\t\tprint('aaasss')\n\t\t\tw.writerow([key,val])"
+        t = t + self.a + "}):\n\t\ta=[]\n\t\tfor key,val in x.items():\n\t\t\ta.append(val)\n\t\tw.writerow(a)"
         file.write(t)
         file.close()
         os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py")
 
         documentReturn()
-     #   messageVar = Message(self, text=ourMessage)
-      #  messageVar.config(bg='lightgreen')
-       # messageVar.grid(row=6)
-        '''if self.a!=" ":
-            self.myText = documentReturn()
-            Label(self,text = self.myText).grid(row=4)'''
+        os.system("open /Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv")
+
+
 
 
     def init_page(self):
-        #Label(self).grid(row=0, stick="w", pady=10)
         Label(self, text='Sex').grid(row=0)
         Label(self, text='Country').grid(row=1)
         Label(self, text='Year').grid(row=2)
