@@ -7,10 +7,9 @@ from components import frames
 
 
 class MainMenu:
-    """Main interface menu"""
+
 
     def __init__(self, master):
-        """Initialization menu"""
         self.master = master # Superior
         self.root = master.root # Main window
         self.page_frame = {
@@ -23,7 +22,6 @@ class MainMenu:
         self.init_menu()
 
     def init_menu(self):
-        """Load menu"""
 
         # Create a menu bar
         self.menubar = Menu(self.root)
@@ -44,7 +42,6 @@ class MainMenu:
         self.menubar.add_cascade(label="CRUD", menu=filemenu)
 
     def open_page(self, frame_name, title):
-        """turn on/Replace the general function of the main interface"""
         self.root.title(title)
         # 先销毁之前frame
         if self.current_frame is not None and (hasattr(self.current_frame.destroy, '__call__')):

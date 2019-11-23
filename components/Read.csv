@@ -1,0 +1,2 @@
+_id,country,year,sex,age,suicides_no,population,suicides/100kpop,country-year,gdp_for_year($),gdp_per_capita,generation
+5dd92eae5cd3257570f89e18,Australia,2020,male,15-24 years,10,100000,23,Australia 2020,546578,54,silent

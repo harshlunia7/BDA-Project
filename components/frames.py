@@ -1,17 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: UTF-8 -*-
-import csv
-import tkinter
+
 import tkinter as tk
-import os
-from tkinter import *
+
 from tkinter.tix import *
 
-import lib.dbcontent as dbcontent
-from components.bdaRead2 import documentReturn
-from lib import global_variable
-from lib.functions import treeview_sort_column
-from pages import win_user_edit, win_user_info, winContentEdit, winContentInfo
 
 
 
@@ -31,7 +22,18 @@ class myCreate(Frame):
 
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
-        self.root = parent  # 定义内部变量root
+        self.root = parent
+        self.entrySex = StringVar()
+        self.entryCountry = StringVar()
+        self.entryYear = StringVar()
+        self.entryAge = StringVar()
+        self.suicides_no = StringVar()
+        self.population = StringVar()
+        self.suicidespop = StringVar()
+        self.countryyear = StringVar()
+        self.gdpforyear = StringVar()
+        self.gdppercapita = StringVar()
+        self.generation = StringVar()
         self.init_page()
 
     def init_page(self):
@@ -40,20 +42,120 @@ class myCreate(Frame):
         Label(self, text='Country').grid(row=1)
         Label(self, text='Year').grid(row=2)
         Label(self, text='Age').grid(row=3)
-        e1 = Entry(self)
-        e2 = Entry(self)
-        e3 = Entry(self)
-        e4 = Entry(self)
+        Label(self, text='SuicideNumber').grid(row=4)
+        Label(self, text='Population').grid(row=5)
+        Label(self,text = 'suicides/100k_pop').grid(row=6)
+        Label(self,text = 'country-year').grid(row=7)
+        Label(self,text = ' gdp_for_year ($) ').grid(row=8)
+        Label(self,text = 'gdp_per_capita ($)').grid(row=9)
+        Label(self,text = 'generation').grid(row=10)
+        button = tk.Button(self, text='Submit', width=25, command=self.createRecordDatabase)
+        button.grid(row=11)
+        e1 = Entry(self, textvariable=self.entrySex)
+        e2 = Entry(self, textvariable=self.entryCountry)
+        e3 = Entry(self, textvariable=self.entryYear)
+        e4 = Entry(self, textvariable=self.entryAge)
+        e5 = Entry(self, textvariable=self.suicides_no)
+        e6 = Entry(self, textvariable=self.population)
+        e7 = Entry(self, textvariable=self.suicidespop)
+        e8 = Entry(self, textvariable=self.countryyear)
+        e9 = Entry(self, textvariable=self.gdpforyear)
+        e10 = Entry(self, textvariable=self.gdppercapita)
+        e11 = Entry(self, textvariable=self.generation)
         e1.grid(row=0, column=1)
         e2.grid(row=1, column=1)
-        e3.grid(row=2,column=1)
-        e4.grid(row=3,column=1)
-        button = tk.Button(self, text='Submit', width=25)
-        button.grid(row=5)
-        ourMessage = 'This is our Message'
-        messageVar = Message(self, text=ourMessage)
-        messageVar.config(bg='lightgreen')
-        messageVar.grid(row=6)
+        e3.grid(row=2, column=1)
+        e4.grid(row=3, column=1)
+        e5.grid(row=4, column=1)
+        e6.grid(row=5, column=1)
+        e7.grid(row=6, column=1)
+        e8.grid(row=7, column=1)
+        e9.grid(row=8, column=1)
+        e10.grid(row=9, column=1)
+        e11.grid(row=10, column=1)
+
+    def createRecordDatabase(self):
+        file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaCreate2.py", "w")
+        self.entrySex3 = self.entrySex.get()
+        self.entryCountry3 = self.entryCountry.get()
+        self.entryYear3 = self.entryYear.get()
+        self.entryAge3 = self.entryAge.get()
+        self.suicides_no3 = self.suicides_no.get()
+        self.population3 = self.population.get()
+        self.suicidespop3= self.suicidespop.get()
+        self.countryyear3 = self.countryyear.get()
+        self.gdpforyear3 = self.gdpforyear.get()
+        self.gdppercapita3 = self.gdppercapita.get()
+        self.generation3 = self.generation.get()
+
+        t1 = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nmycol.insert({"
+
+        a = ""
+
+
+        if self.entryCountry3 != "-1":
+             if a != "":
+                a = a + ",'country':'" + self.entryCountry3 + "'"
+             else:
+                a = a + "'country':'" + self.entryCountry3 + "'"
+
+        if self.entryYear3 != "-1":
+             if a != "":
+                a = a + ",'year':" + self.entryYear3
+             else:
+                a = a + "'year':" + self.entryYear3
+        if self.entrySex3 != "-1":
+             if a != "":
+                a = a + ",'sex':'" + self.entrySex3 + "'"
+             else:
+                a = a + "'sex':'" + self.entrySex3 + "'"
+
+
+        if self.entryAge3 != "-1":
+             if a != "":
+                a = a + ",'age':'" + self.entryAge3 + "'"
+             else:
+                a = a + "'age':'" + self.entryAge3 + "'"
+        if self.suicides_no3 != "-1":
+            if a != "":
+                a = a + ",'suicides_no':'" + self.suicides_no3 + "'"
+            else:
+                a = a + "'suicides_no':'" + self.suicides_no3 + "'"
+        if self.population3 != "-1":
+            if a != "":
+                a = a + ",'population':'" + self.population3 + "'"
+            else:
+                a = a + "'population':'" + self.population3 + "'"
+        if self.suicidespop3 != "-1":
+            if a != "":
+                a = a + ",'suicides/100k pop':'" + self.suicidespop3 + "'"
+            else:
+                a = a + "'suicides/100k pop':'" + self.suicidespop3 + "'"
+        if self.countryyear3 != "-1":
+            if a != "":
+                a = a + ",'country-year':'" + self.countryyear3 + "'"
+            else:
+                a = a + "'country-year':'" + self.countryyear3 + "'"
+        if self.gdpforyear3 != "-1":
+            if a != "":
+                a = a + ",'gdp_for_year ($)':'" + self.gdpforyear3 + "'"
+            else:
+                a = a + "'gdp_for_year ($)':'" + self.gdpforyear3 + "'"
+        if self.gdppercapita3 != "-1":
+            if a != "":
+                a = a + ",'gdp_per_capita ($)':'" + self.gdppercapita3 + "'"
+            else:
+                a = a + "'gdp_per_capita ($)':'" + self.gdppercapita3 + "'"
+
+        if self.generation3 != "-1":
+            if a != "":
+                a = a + ",'generation':'" + self.generation3 + "'"
+            else:
+                a = a + "'generation':'" + self.generation3 + "'"
+        t1 = t1 + a + "})"
+        file.write(t1)
+        file.close()
+        os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaCreate2.py")
 
 
 class myRead(Frame):
@@ -73,7 +175,7 @@ class myRead(Frame):
         self.entryCountry2 = self.entryCountry.get()
         self.entryYear2 = self.entryYear.get()
         file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py", "w")
-        t = "import pymongo\nimport csv\ndef documentReturn():\n\tmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\n\tmydb = myclient['suicideRate']\n\tmycol = mydb['suicideCollection']\n\tw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'w'))\n\tw.writerow(['_id',	'country','year','sex','age','suicides_no','population','suicides/100kpop','country-year','gdp_for_year($)','gdp_per_capita','generation'])\n\tw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'a'))\n\tfor x in mycol.find({"
+        t = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'w'))\nw.writerow(['_id',	'country','year','sex','age','suicides_no','population','suicides/100kpop','country-year','gdp_for_year($)','gdp_per_capita','generation'])\nw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'a'))\nfor x in mycol.find({"
         self.a = ""
 
         if self.entrySex2 != "-1":
@@ -98,12 +200,11 @@ class myRead(Frame):
             else:
                 self.a = self.a + "'age':'" + self.entryAge2 + "'"
 
-        t = t + self.a + "}):\n\t\ta=[]\n\t\tfor key,val in x.items():\n\t\t\ta.append(val)\n\t\tw.writerow(a)"
+        t = t + self.a + "}):\n\ta=[]\n\tfor key,val in x.items():\n\t\ta.append(val)\n\tw.writerow(a)"
         file.write(t)
         file.close()
         os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py")
 
-        documentReturn()
         os.system("open /Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv")
 
 
@@ -132,11 +233,12 @@ class myUpdate(Frame):
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
         self.root = parent
-        self.list = []
-        self.selected_item = None
-        self.selected_name = StringVar()
-        self.win_content_info = None
-        self.win_content_edit = None
+        self.entrySex = StringVar()
+        self.entryCountry = StringVar()
+        self.entryYear = StringVar()
+        self.entryAge = StringVar()
+        self.suicides_no = StringVar()
+        self.population = StringVar()
         self.init_page()
 
     def init_page(self):
@@ -147,14 +249,14 @@ class myUpdate(Frame):
         Label(self, text='Age').grid(row=3)
         Label(self, text='SuicideNumber').grid(row=4)
         Label(self, text='Population').grid(row=5)
-        button = tk.Button(self, text='Submit', width=25)
+        button = tk.Button(self, text='Submit', width=25,command = self.updateMyDatabase)
         button.grid(row=6)
-        e1 = Entry(self)
-        e2 = Entry(self)
-        e3 = Entry(self)
-        e4 = Entry(self)
-        e5 = Entry(self)
-        e6 = Entry(self)
+        e1 = Entry(self,textvariable = self.entrySex)
+        e2 = Entry(self,textvariable = self.entryCountry)
+        e3 = Entry(self,textvariable = self.entryYear)
+        e4 = Entry(self,textvariable = self.entryAge)
+        e5 = Entry(self,textvariable = self.suicides_no)
+        e6 = Entry(self,textvariable =  self.population)
         e1.grid(row=0, column=1)
         e2.grid(row=1, column=1)
         e3.grid(row=2,column=1)
@@ -162,130 +264,128 @@ class myUpdate(Frame):
         e5.grid(row=4, column=1)
         e6.grid(row=5, column=1)
 
+    def updateMyDatabase(self):
+        file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaUpdate2.py", "w")
+        self.entrySex3 = self.entrySex.get()
+        self.entryAge3 = self.entryAge.get()
+        self.entryCountry3 = self.entryCountry.get()
+        self.entryYear3 = self.entryYear.get()
+        self.suicides_no3 = self.suicides_no.get()
+        self.population3 = self.population.get()
+        t1 = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nmycol.update({"
+
+        a = ""
+        if self.entrySex3 != "-1":
+            if a != "":
+                a = a + ",'sex':'" + self.entrySex3 + "'"
+            else:
+                a = a + "'sex':'" + self.entrySex3 + "'"
+
+        if self.entryCountry3 != "-1":
+            if a != "":
+                a = a + ",'country':'" + self.entryCountry3 + "'"
+            else:
+                a = a + "'country':'" + self.entryCountry3 + "'"
+        if self.entryYear3 != "-1":
+            if a != "":
+                a = a + ",'year':" + self.entryYear3
+            else:
+                a = a + "'year':" + self.entryYear3
+        if self.entryAge3  != "-1":
+            if a != "":
+                a = a + ",'age':'" + self.entryAge3  + "'"
+            else:
+                a = a + "'age':'" + self.entryAge3  + "'"
+        t1 = t1 + a + "}"
+        a = ",{'$set':{"
+        a = ""
 
 
+        if self.suicides_no3 != "-1":
+            if a == "":
+                a = a + ",{'$set':{'suicides_no':" + self.suicides_no3
+            else:
+                a = a + ",'suicides_no':" + self.suicides_no3
 
-    def select(self, event):
-        # event.widget获取Treeview对象，调用selection获取选择所有选中的
-        slct = event.widget.selection()[0]
-        self.selected_item = self.tree_view.item(slct)
-        self.selected_name.set(self.selected_item["values"][1])
-        # print("you clicked on ", self.selected_item)
-        # print(self.selected_name)
-
-    def info(self):
-        print("Details", self.selected_item)
-        if self.selected_item is None:
-            messagebox.showinfo("prompt", "Please choose first")
+        if self.population3 != "-1":
+            if a == "":
+                a = a + ",{'$set':{'population':" + self.population3
+            else:
+                a = a + ",'population':" + self.population3
+        if a == "":
+            t1 = t1 + ")"
         else:
-            if self.win_content_info is not None and hasattr(self.win_content_info.destroy, "__call__"):
-                # if self.win_content_info and self.win_content_info.destroy:
-                self.win_content_info.destroy()
-            self.win_content_info = winContentInfo.Init(self.selected_item)
-            # self.win_content_info = winAbout.Init()
-
-    def edit(self):
-        """编辑"""
-        print("edit", self.selected_item)
-        if self.selected_item is None:
-            messagebox.showinfo("prompt", "Please choose first")
-        else:
-            if self.win_content_edit and self.win_content_edit.destroy:
-                self.win_content_edit.destroy()
-            self.win_content_edit = winContentEdit.Init(self.selected_item)
-
-    def delete(self):
-        """删除"""
-        print(self.selected_item)
-        messagebox.showinfo("delete?", self.selected_item)  # 弹出消息提示框
+            t1 = t1 + a + "}})"
+        file.write(t1)
+        file.close()
+        os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaUpdate2.py")
 
 
 class myDelete(Frame):
-    """文章统计"""
 
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
         self.root = parent
+        self.entrySex = StringVar()
+        self.entryCountry = StringVar()
+        self.entryYear = StringVar()
+        self.entryAge = StringVar()
         self.init_page()
 
+    def deleteMyDatabase(self):
+        self.entrySex4 = self.entrySex.get()
+        self.entryAge4 = self.entryAge.get()
+        self.entryCountry4 = self.entryCountry.get()
+        self.entryYear4 = self.entryYear.get()
+        file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaDelete2.py", "w")
+        t = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nmycol.remove({"
+        self.a = ""
+
+        if self.entrySex4 != "-1":
+            if self.a != "":
+                self.a = self.a + ",'sex':'" + self.entrySex4 + "'"
+            else:
+                self.a = self.a + "'sex':'" + self.entrySex4 + "'"
+
+        if self.entryCountry4 != "-1":
+            if self.a != "":
+                self.a = self.a + ",'country':'" + self.entryCountry4 + "'"
+            else:
+                self.a = self.a + "'country':'" + self.entryCountry4 + "'"
+        if self.entryYear4 != "-1":
+            if self.a != "":
+                self.a = self.a + ",'year':" + self.entryYear4
+            else:
+                self.a = self.a + "'year':" + self.entryYear4
+        if self.entryAge4 != "-1":
+            if self.a != "":
+                self.a = self.a + ",'age':'" + self.entryAge4 + "'"
+            else:
+                self.a = self.a + "'age':'" + self.entryAge4 + "'"
+
+        t = t + self.a + "})"
+        file.write(t)
+        file.close()
+        os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaDelete2.py")
+
+
     def init_page(self):
-        """加载控件"""
-        Label(self, text="Statistical interface").pack()
+        Label(self, text='Sex').grid(row=0)
+        Label(self, text='Country').grid(row=1)
+        Label(self, text='Year').grid(row=2)
+        Label(self, text='Age').grid(row=3)
+        e1 = Entry(self,textvariable = self.entrySex)
+        e2 = Entry(self,textvariable = self.entryCountry)
+        e3 = Entry(self,textvariable = self.entryYear)
+        e4 = Entry(self,textvariable = self.entryAge)
+        e1.grid(row=0, column=1)
+        e2.grid(row=1, column=1)
+        e3.grid(row=2, column=1)
+        e4.grid(row=3, column=1)
+        button = tk.Button(self, text='Submit', width=25, command=self.deleteMyDatabase)
+        button.grid(row=4)
 
 
 
-        self.tree_view.heading("id", text="ID")
-        self.tree_view.heading("name", text="Name")
-        self.tree_view.heading("password", text="password")
-        self.tree_view.heading("op", text="operating")
-
-        # 插入数据
-        num = 1
-        for item in self.list:
-            self.tree_view.insert(
-                "",
-                num,
-                text="",
-                values=(item["id"], item["name"], item["password"], "Details"),
-            )
-        # 选中行
-        self.tree_view.bind("<<TreeviewSelect>>", self.select)
-
-       # 排序
-        for col in self.tree_view["columns"]:  # 给所有标题加
-            self.tree_view.heading(
-                col,
-                text=col,
-                command=lambda _col=col: treeview_sort_column(
-                    self.tree_view, _col, False
-                ),
-            )
-
-
-        vbar = ttk.Scrollbar(self, orient="vertical", command=self.tree_view.yview)
-        self.tree_view.configure(yscrollcommand=vbar.set)
-        self.tree_view.grid(row=1, column=0, sticky="nsew")
-        vbar.grid(row=1, column=1, sticky="ns")
-        Label(self, text="Bottom action bar").grid(sticky="swe")
-
-    def select(self, event):
-        """选中"""
-        # event.widget获取Treeview对象，调用selection获取选择所有选中的
-        slct = event.widget.selection()[0]
-        self.selected_item = self.tree_view.item(slct)
-        self.selected_name.set(self.selected_item["values"][1])
-
-    def info(self):
-        """详情"""
-        print("Details", self.selected_item)
-        if self.selected_item is None:
-            messagebox.showinfo("prompt", "Please choose first")
-        else:
-            if self.win_user_info is not None and (
-                hasattr(self.win_user_info.destroy, "__call__")
-            ):
-                self.win_user_info.destroy()
-            self.win_user_info = win_user_info.Init(self.selected_item)
-
-    def edit(self):
-        """用户编辑"""
-        print("edit", self.selected_item)
-        if self.selected_item is None:
-            messagebox.showinfo("prompt", "Please choose first")
-        else:
-            if self.win_user_edit is not None and hasattr(
-                self.win_user_edit.destroy, "__call__"
-            ):
-                self.win_user_edit.destroy()
-            self.win_user_edit = win_user_edit.Init(self.selected_item)
-
-    def delete(self):
-        """用户删除"""
-        print(self.selected_item)
-        messagebox.showinfo("delete users?", self.selected_item)  # 弹出消息提示框
-
-    def reset(self):
-        """用户删除"""
-        print("User delete")
 
 
