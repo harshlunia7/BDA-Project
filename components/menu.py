@@ -14,6 +14,7 @@ class MainMenu:
         self.master = master # Superior
         self.root = master.root # Main window
         self.page_frame = {
+            "home":frames.myHome,
             "create": frames.myCreate,
             "read": frames.myRead,
             "update": frames.myUpdate,
@@ -54,17 +55,13 @@ class MainMenu:
 
     def file_read(self):
         self.open_page("read", "Read")
-        messagebox.showinfo("turn on", "file-turn on！")  # Message prompt box
 
     def file_create(self):
         self.open_page("create", "Create")
-        messagebox.showinfo("New", "file-New！")  # Message prompt box
 
     def file_update(self):
         self.open_page("update", "Update")
-        messagebox.showinfo("save", "file-save！")  # Message prompt box
 
     def file_delete(self):
         self.open_page("delete", "Delete")
-        messagebox.showinfo("Cutting", "edit-Cutting！")  # Message prompt box
 

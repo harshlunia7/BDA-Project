@@ -17,13 +17,11 @@ class MainPage():
         # initializationFrames
         self.current_frame = None
         self.page_frame = {
-            "home": frames.HomeFrame,
-            "content_add": frames.ContentAdd,
-            "content_list": frames.ContentList,
-            "count": frames.CountFrame,
-            "contact": frames.AboutFrame,
-            "user_list": frames.UserListFrame,
-            "user_add": frames.UserAddFrame
+            "home":frames.myHome,
+            "create": frames.myCreate,
+            "read": frames.myRead,
+            "update": frames.myUpdate,
+            "delete": frames.myDelete
         }
         self.open_home()
         self.win_about = None

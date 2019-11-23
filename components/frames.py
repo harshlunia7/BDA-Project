@@ -1,17 +1,31 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
-from tkinter import (Button, Label, Frame, Entry, LabelFrame, StringVar, messagebox,
-                     scrolledtext, ttk)
+import tkinter as tk
+import os
+from tkinter import *
 
 import lib.dbcontent as dbcontent
+from components.bdaRead2 import documentReturn
 from lib import global_variable
 from lib.functions import treeview_sort_column
 from pages import win_user_edit, win_user_info, winContentEdit, winContentInfo
 
 
-class myCreate(Frame):  # 继承Frame类
-    """应用主界面"""
+
+class myHome(Frame):
+    def __init__(self, parent=None):
+        Frame.__init__(self, parent)
+        self.root = parent
+        self.init_page()
+
+    def init_page(self):
+        label = Label(self, text='Welcome \n Select One Of the Opeartions of CRUD ')
+        label.grid(row=0)
+        label.config(font=("Courier", 30))
+
+
+class myCreate(Frame):
 
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
@@ -19,71 +33,103 @@ class myCreate(Frame):  # 继承Frame类
         self.init_page()
 
     def init_page(self):
-        Label(self, text="Create Function").pack()
+        Label(self).grid(row=0, stick="w", pady=10)
+        Label(self, text='Sex').grid(row=0)
+        Label(self, text='Country').grid(row=1)
+        Label(self, text='Year').grid(row=2)
+        Label(self, text='Age').grid(row=3)
+        e1 = Entry(self)
+        e2 = Entry(self)
+        e3 = Entry(self)
+        e4 = Entry(self)
+        e1.grid(row=0, column=1)
+        e2.grid(row=1, column=1)
+        e3.grid(row=2,column=1)
+        e4.grid(row=3,column=1)
+        button = tk.Button(self, text='Submit', width=25)
+        button.grid(row=5)
+        ourMessage = 'This is our Message'
+        messageVar = Message(self, text=ourMessage)
+        messageVar.config(bg='lightgreen')
+        messageVar.grid(row=6)
+
 
 class myRead(Frame):
-    """文章添加"""
 
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
-        self.root = parent  # 定义内部变量root
-        self.content_title = StringVar()
-        self.content_textarea = None
-        self.content_tag = StringVar()
+        self.root = parent
+        self.entrySex = StringVar()
+        self.entryCountry = StringVar()
+        self.entryYear = StringVar()
+        self.entryAge = StringVar()
         self.init_page()
 
+    def readMyDatabase(self):
+        self.entrySex2 = self.entrySex.get()
+        self.entryAge2 = self.entryAge.get()
+        self.entryCountry2 = self.entryCountry.get()
+        self.entryYear2 = self.entryYear.get()
+        file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py", "w")
+        t = "import pymongo\nimport csv\ndef documentReturn():\n\tprint('aa')\n\tmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\n\tmydb = myclient['suicideRate']\n\tmycol = mydb['suicideCollection']\n\tw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'a'))\n\tfor x in mycol.find({"
+        self.a = ""
+
+        if self.entrySex2 != "-1":
+            if self.a != "":
+                self.a = self.a + ",'sex':'" + self.entrySex2 + "'"
+            else:
+                self.a = self.a + "'sex':'" + self.entrySex2 + "'"
+
+        if self.entryCountry2 != "-1":
+            if self.a != "":
+                self.a = self.a + ",'country':'" + self.entryCountry2 + "'"
+            else:
+                self.a = self.a + "'country':'" + self.entryCountry2 + "'"
+        if self.entryYear2 != "-1":
+            if self.a != "":
+                self.a = self.a + ",'year':" + self.entryYear2
+            else:
+                self.a = self.a + "'year':" + self.entryYear2
+        if self.entryAge2 != "-1":
+            if self.a != "":
+                self.a = self.a + ",'age':'" + self.entryAge2 + "'"
+            else:
+                self.a = self.a + "'age':'" + self.entryAge2 + "'"
+
+        t = t + self.a + "}):\n\t\tprint(x)\n\t\tfor key,val in x.items():\n\t\t\tprint('aaasss')\n\t\t\tw.writerow([key,val])"
+        file.write(t)
+        file.close()
+        os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py")
+
+        documentReturn()
+     #   messageVar = Message(self, text=ourMessage)
+      #  messageVar.config(bg='lightgreen')
+       # messageVar.grid(row=6)
+        '''if self.a!=" ":
+            self.myText = documentReturn()
+            Label(self,text = self.myText).grid(row=4)'''
+
+
     def init_page(self):
-        """加载控件"""
-        Label(self).grid(row=0, stick="w", pady=10)
+        #Label(self).grid(row=0, stick="w", pady=10)
+        Label(self, text='Sex').grid(row=0)
+        Label(self, text='Country').grid(row=1)
+        Label(self, text='Year').grid(row=2)
+        Label(self, text='Age').grid(row=3)
+        e1 = Entry(self,textvariable = self.entrySex)
+        e2 = Entry(self,textvariable = self.entryCountry)
+        e3 = Entry(self,textvariable = self.entryYear)
+        e4 = Entry(self,textvariable = self.entryAge)
+        e1.grid(row=0, column=1)
+        e2.grid(row=1, column=1)
+        e3.grid(row=2, column=1)
+        e4.grid(row=3, column=1)
+        button = tk.Button(self, text='Submit', width=25, command=self.readMyDatabase)
+        button.grid(row=4)
 
-        lb1 = Label(self, text="title: ")
-        lb1.grid(row=1, stick="w", pady=10)
-
-        et1 = Entry(self, textvariable=self.content_title)
-        et1.grid(row=1, column=1, stick="we")
-
-        lb2 = Label(self, text="content: ")
-        lb2.grid(row=2, stick="nw", pady=10)
-
-        et2 = scrolledtext.ScrolledText(
-            self,
-            height=10,
-            font=("Courier New", 13),
-            fg="#333",
-            borderwidth=1,
-            highlightcolor="#ddd",
-        )
-        et2.grid(row=2, column=1, ipadx=10, stick="nswe")
-        self.content_textarea = et2
-
-        lb3 = Label(self, text="label: ")
-        lb3.grid(row=3, stick="w", pady=10)
-
-        et3 = Entry(self, textvariable=self.content_tag)
-        et3.grid(row=3, column=1, columnspan=2, stick="we")
-
-        bt1 = Button(self, text="Add to", command=self.do_add)
-        bt1.grid(row=6, column=1, stick="e", pady=10)
-
-    def do_add(self):
-        """添加文章"""
-        title = self.content_title.get()
-        content = self.content_textarea.get(0.0, "end")
-        tag = self.content_tag.get()
-        username = str(global_variable.get_variable("CURRENT_USER_NAME"))
-        res = dbcontent.content_add(username, title, content, tag)
-        if res is True:
-            self.content_title.set("")
-            self.content_tag.set("")
-            self.content_textarea.delete(1.0, "end")  # 清空
-            self.content_textarea.update()
-            messagebox.showinfo(title="success", message="Added successfully")
-        else:
-            messagebox.showinfo(title="error", message="add failed")
 
 
 class myUpdate(Frame):
-    """文章列表"""
 
     def __init__(self, parent=None):
         Frame.__init__(self, parent)
@@ -96,66 +142,32 @@ class myUpdate(Frame):
         self.init_page()
 
     def init_page(self):
-        """加载控件"""
+        Label(self).grid(row=0, stick="w", pady=10)
+        Label(self, text='Sex').grid(row=0)
+        Label(self, text='Country').grid(row=1)
+        Label(self, text='Year').grid(row=2)
+        Label(self, text='Age').grid(row=3)
+        Label(self, text='SuicideNumber').grid(row=4)
+        Label(self, text='Population').grid(row=5)
+        button = tk.Button(self, text='Submit', width=25)
+        button.grid(row=6)
+        e1 = Entry(self)
+        e2 = Entry(self)
+        e3 = Entry(self)
+        e4 = Entry(self)
+        e5 = Entry(self)
+        e6 = Entry(self)
+        e1.grid(row=0, column=1)
+        e2.grid(row=1, column=1)
+        e3.grid(row=2,column=1)
+        e4.grid(row=3,column=1)
+        e5.grid(row=4, column=1)
+        e6.grid(row=5, column=1)
 
-        username = str(global_variable.get_variable("CURRENT_USER_NAME"))
-        self.list = dbcontent.content_list_by_username(username)
 
-        head_frame = LabelFrame(self, text="Article operation")
-        head_frame.grid(row=0, column=0, columnspan=2, sticky="nswe")
-        Label(head_frame, textvariable=self.selected_name).pack()
 
-        btn_info = Button(head_frame, text="Details", command=self.info)
-        btn_info.pack(side="left")
-        btn_edit = Button(head_frame, text="edit", command=self.edit)
-        btn_edit.pack(side="left")
-        btn_delete = Button(head_frame, text="delete", command=self.delete)
-        btn_delete.pack(side="left")
-
-        # 表格
-        self.tree_view = ttk.Treeview(self, show="headings")
-
-        self.tree_view["columns"] = ("id", "title", "content", "tag")
-        # 列设置
-        self.tree_view.column("id", width=100)
-        # self.tree_view.column("title", width=100)
-        # self.tree_view.column("content", width=100)
-        # self.tree_view.column("tag", width=100)
-        # 显示表头
-        self.tree_view.heading("id", text="ID")
-        self.tree_view.heading("title", text="title")
-        self.tree_view.heading("content", text="content")
-        self.tree_view.heading("tag", text="label")
-
-        # 插入数据
-        num = 1
-        for item in self.list:
-            self.tree_view.insert(
-                "",
-                num,
-                text="",
-                values=(item["id"], item["title"], item["content"], item["tag"]),
-            )
-        # 选中行
-        self.tree_view.bind("<<TreeviewSelect>>", self.select)
-
-        # 排序
-        for col in self.tree_view["columns"]:  # 给所有标题加
-            self.tree_view.heading(
-                col,
-                text=col,
-                command=lambda _col=col: treeview_sort_column(
-                    self.tree_view, _col, False
-                ),
-            )
-
-        vbar = ttk.Scrollbar(self, orient="vertical", command=self.tree_view.yview)
-        self.tree_view.configure(yscrollcommand=vbar.set)
-        self.tree_view.grid(row=1, column=0, sticky="nsew")
-        vbar.grid(row=1, column=1, sticky="ns")
 
     def select(self, event):
-        """选中"""
         # event.widget获取Treeview对象，调用selection获取选择所有选中的
         slct = event.widget.selection()[0]
         self.selected_item = self.tree_view.item(slct)
@@ -164,7 +176,6 @@ class myUpdate(Frame):
         # print(self.selected_name)
 
     def info(self):
-        """详情"""
         print("Details", self.selected_item)
         if self.selected_item is None:
             messagebox.showinfo("prompt", "Please choose first")
@@ -280,40 +291,3 @@ class myDelete(Frame):
         print("User delete")
 
 
-class UserAddFrame(Frame):
-    """用户添加"""
-
-    def __init__(self, parent=None):
-        Frame.__init__(self, parent)
-        self.root = parent
-        self.username = StringVar()
-        self.password = StringVar()
-        self.init_page()
-
-    def init_page(self):
-        """加载控件"""
-        Label(self).grid(row=0, stick="w")
-
-        Label(self, text="Account: ").grid(row=1, stick="w", pady=10)
-        username = Entry(self, textvariable=self.username)
-        username.grid(row=1, column=1, stick="e")
-
-        Label(self, text="password: ").grid(row=2, stick="w", pady=10)
-        password = Entry(self, textvariable=self.password, show="*")
-        password.grid(row=2, column=1, stick="e")
-
-        button_login = Button(self, text="Add to", command=self.do_add)
-        button_login.grid(row=3, column=1, stick="w", pady=10)
-
-    def do_add(self):
-        """添加帐号"""
-        # print(event)
-        username = self.username.get()
-        password = self.password.get()
-        res = dbcontent.user_add(username, password)
-        if res is True:
-            self.username.set("")
-            self.password.set("")
-            messagebox.showinfo(title="success", message="Added successfully")
-        else:
-            messagebox.showinfo(title="error", message="Account already exists")
