@@ -13,7 +13,7 @@ class myHome(Frame):
         self.init_page()
 
     def init_page(self):
-        label = Label(self, text='Welcome \n Select One Of the Opeartions of CRUD ')
+        label = Label(self, text='Welcome \n To Suicide Data Analysis ')
         label.grid(row=0)
         label.config(font=("Courier", 30))
 
@@ -21,6 +21,7 @@ class myHome(Frame):
 class myCreate(Frame):
 
     def __init__(self, parent=None):
+
         Frame.__init__(self, parent)
         self.root = parent
         self.entrySex = StringVar()
@@ -34,7 +35,8 @@ class myCreate(Frame):
         self.gdpforyear = StringVar()
         self.gdppercapita = StringVar()
         self.generation = StringVar()
-        self.init_page()
+        self.init_page() 
+
 
     def init_page(self):
         Label(self).grid(row=0, stick="w", pady=10)
