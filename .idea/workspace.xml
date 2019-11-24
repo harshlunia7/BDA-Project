@@ -3,47 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b12cdf8-55b4-4b1d-8bd5-63ca6cb4c323" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README_CN.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/bdaMaster.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/bdaMaster2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/bdaRead.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/bdaUpdate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build_init_app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Read.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/bdaCreate2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/bdaDelete2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/bdaRead2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/bdaUpdate2.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/frames.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/frames.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/config.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/database.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/image/128.icns" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/image/16.icns" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/image/32.icns" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/image/48.icns" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/image/splash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/init.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dbcontent.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/global_variable.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sqlite_helper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.spec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/winAbout.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/winContentEdit.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/winContentInfo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/win_login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/win_splah.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/win_splah.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/win_user_edit.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/win_user_info.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

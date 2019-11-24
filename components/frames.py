@@ -31,11 +31,9 @@ class myCreate(Frame):
         self.suicides_no = StringVar()
         self.population = StringVar()
         self.suicidespop = StringVar()
-        self.countryyear = StringVar()
         self.gdpforyear = StringVar()
         self.gdppercapita = StringVar()
-        self.generation = StringVar()
-        self.init_page() 
+        self.init_page()
 
 
     def init_page(self):
@@ -47,12 +45,10 @@ class myCreate(Frame):
         Label(self, text='SuicideNumber').grid(row=4)
         Label(self, text='Population').grid(row=5)
         Label(self,text = 'suicides/100k_pop').grid(row=6)
-        Label(self,text = 'country-year').grid(row=7)
-        Label(self,text = ' gdp_for_year ($) ').grid(row=8)
-        Label(self,text = 'gdp_per_capita ($)').grid(row=9)
-        Label(self,text = 'generation').grid(row=10)
+        Label(self,text = ' gdp_for_year ($) ').grid(row=7)
+        Label(self,text = 'gdp_per_capita ($)').grid(row=8)
         button = tk.Button(self, text='Submit', width=25, command=self.createRecordDatabase)
-        button.grid(row=11)
+        button.grid(row=9)
         e1 = Entry(self, textvariable=self.entrySex)
         e2 = Entry(self, textvariable=self.entryCountry)
         e3 = Entry(self, textvariable=self.entryYear)
@@ -60,10 +56,8 @@ class myCreate(Frame):
         e5 = Entry(self, textvariable=self.suicides_no)
         e6 = Entry(self, textvariable=self.population)
         e7 = Entry(self, textvariable=self.suicidespop)
-        e8 = Entry(self, textvariable=self.countryyear)
-        e9 = Entry(self, textvariable=self.gdpforyear)
-        e10 = Entry(self, textvariable=self.gdppercapita)
-        e11 = Entry(self, textvariable=self.generation)
+        e8 = Entry(self, textvariable=self.gdpforyear)
+        e9 = Entry(self, textvariable=self.gdppercapita)
         e1.grid(row=0, column=1)
         e2.grid(row=1, column=1)
         e3.grid(row=2, column=1)
@@ -73,8 +67,6 @@ class myCreate(Frame):
         e7.grid(row=6, column=1)
         e8.grid(row=7, column=1)
         e9.grid(row=8, column=1)
-        e10.grid(row=9, column=1)
-        e11.grid(row=10, column=1)
 
     def createRecordDatabase(self):
         file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaCreate2.py", "w")
@@ -85,10 +77,8 @@ class myCreate(Frame):
         self.suicides_no3 = self.suicides_no.get()
         self.population3 = self.population.get()
         self.suicidespop3= self.suicidespop.get()
-        self.countryyear3 = self.countryyear.get()
         self.gdpforyear3 = self.gdpforyear.get()
         self.gdppercapita3 = self.gdppercapita.get()
-        self.generation3 = self.generation.get()
 
         t1 = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nmycol.insert({"
 
@@ -133,11 +123,6 @@ class myCreate(Frame):
                 a = a + ",'suicides/100k pop':'" + self.suicidespop3 + "'"
             else:
                 a = a + "'suicides/100k pop':'" + self.suicidespop3 + "'"
-        if self.countryyear3 != "-1":
-            if a != "":
-                a = a + ",'country-year':'" + self.countryyear3 + "'"
-            else:
-                a = a + "'country-year':'" + self.countryyear3 + "'"
         if self.gdpforyear3 != "-1":
             if a != "":
                 a = a + ",'gdp_for_year ($)':'" + self.gdpforyear3 + "'"
@@ -149,11 +134,6 @@ class myCreate(Frame):
             else:
                 a = a + "'gdp_per_capita ($)':'" + self.gdppercapita3 + "'"
 
-        if self.generation3 != "-1":
-            if a != "":
-                a = a + ",'generation':'" + self.generation3 + "'"
-            else:
-                a = a + "'generation':'" + self.generation3 + "'"
         t1 = t1 + a + "})"
         file.write(t1)
         file.close()
@@ -172,10 +152,8 @@ class myRead(Frame):
         self.suicides_no = StringVar()
         self.population = StringVar()
         self.suicidespop = StringVar()
-        self.countryyear = StringVar()
         self.gdpforyear = StringVar()
         self.gdppercapita = StringVar()
-        self.generation = StringVar()
         self.init_page()
 
 
@@ -187,12 +165,10 @@ class myRead(Frame):
         self.suicides_no3 = self.suicides_no.get()
         self.population3 = self.population.get()
         self.suicidespop3= self.suicidespop.get()
-        self.countryyear3 = self.countryyear.get()
         self.gdpforyear3 = self.gdpforyear.get()
         self.gdppercapita3 = self.gdppercapita.get()
-        self.generation3 = self.generation.get()
         file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaRead2.py", "w")
-        t = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'w'))\nw.writerow(['_id',	'country','year','sex','age','suicides_no','population','suicides/100kpop','country-year','gdp_for_year($)','gdp_per_capita','generation'])\nw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'a'))\nfor x in mycol.find({"
+        t = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'w'))\nw.writerow(['_id',	'country','year','sex','age','suicides_no','population','suicides/100kpop','country-year','gdp_for_year($)','gdp_per_capita'])\nw = csv.writer(open('/Users/anish/Desktop/tkinter-gui-application-examples-master/components/Read.csv', 'a'))\nfor x in mycol.find({"
         a = ""
 
         if self.entryCountry3 != "-1":
@@ -233,11 +209,6 @@ class myRead(Frame):
                 a = a + ",'suicides/100k pop':'" + self.suicidespop3 + "'"
             else:
                 a = a + "'suicides/100k pop':'" + self.suicidespop3 + "'"
-        if self.countryyear3 != "-1":
-            if a != "":
-                a = a + ",'country-year':'" + self.countryyear3 + "'"
-            else:
-                a = a + "'country-year':'" + self.countryyear3 + "'"
         if self.gdpforyear3 != "-1":
             if a != "":
                 a = a + ",'gdp_for_year ($)':'" + self.gdpforyear3 + "'"
@@ -249,11 +220,6 @@ class myRead(Frame):
             else:
                 a = a + "'gdp_per_capita ($)':'" + self.gdppercapita3 + "'"
 
-        if self.generation3 != "-1":
-            if a != "":
-                a = a + ",'generation':'" + self.generation3 + "'"
-            else:
-                a = a + "'generation':'" + self.generation3 + "'"
 
         t = t + a + "}):\n\ta=[]\n\tfor key,val in x.items():\n\t\ta.append(val)\n\tw.writerow(a)"
         file.write(t)
@@ -281,12 +247,10 @@ class myRead(Frame):
         Label(self, text='SuicideNumber').grid(row=4)
         Label(self, text='Population').grid(row=5)
         Label(self,text = 'suicides/100k_pop').grid(row=6)
-        Label(self,text = 'country-year').grid(row=7)
-        Label(self,text = ' gdp_for_year ($) ').grid(row=8)
-        Label(self,text = 'gdp_per_capita ($)').grid(row=9)
-        Label(self,text = 'generation').grid(row=10)
+        Label(self,text = ' gdp_for_year ($) ').grid(row=7)
+        Label(self,text = 'gdp_per_capita ($)').grid(row=8)
         button = tk.Button(self, text='Submit', width=25, command=self.readMyDatabase)
-        button.grid(row=11)
+        button.grid(row=9)
         e1 = Entry(self, textvariable=self.entrySex)
         e2 = Entry(self, textvariable=self.entryCountry)
         e3 = Entry(self, textvariable=self.entryYear)
@@ -294,10 +258,8 @@ class myRead(Frame):
         e5 = Entry(self, textvariable=self.suicides_no)
         e6 = Entry(self, textvariable=self.population)
         e7 = Entry(self, textvariable=self.suicidespop)
-        e8 = Entry(self, textvariable=self.countryyear)
-        e9 = Entry(self, textvariable=self.gdpforyear)
-        e10 = Entry(self, textvariable=self.gdppercapita)
-        e11 = Entry(self, textvariable=self.generation)
+        e8 = Entry(self, textvariable=self.gdpforyear)
+        e9 = Entry(self, textvariable=self.gdppercapita)
         e1.grid(row=0, column=1)
         e2.grid(row=1, column=1)
         e3.grid(row=2, column=1)
@@ -307,8 +269,6 @@ class myRead(Frame):
         e7.grid(row=6, column=1)
         e8.grid(row=7, column=1)
         e9.grid(row=8, column=1)
-        e10.grid(row=9, column=1)
-        e11.grid(row=10, column=1)
 
 
 class myUpdate(Frame):
