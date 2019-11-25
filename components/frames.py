@@ -3,7 +3,7 @@ import tkinter as tk
 
 from tkinter.tix import *
 
-
+from tkinter import messagebox
 
 
 class myHome(Frame):
@@ -156,6 +156,8 @@ class myCreate(Frame):
         file.write(t1)
         file.close()
         os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaCreate2.py")
+
+        messagebox.showinfo("Create", "Record Created Successfully")
 
 
 class myRead(Frame):
@@ -439,6 +441,8 @@ class myUpdate(Frame):
         file.close()
         os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaUpdate2.py")
 
+        messagebox.showinfo("Update", "Record Updated Successfully")
+
 
 class myDelete(Frame):
 
@@ -487,7 +491,7 @@ class myDelete(Frame):
         self.e8.delete(0, 'end')
         self.e9.delete(0, 'end')
 
-        
+
         file = open("/Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaDelete2.py", "w")
         t = "import pymongo\nimport csv\nmyclient = pymongo.MongoClient('mongodb://localhost:27017/')\nmydb = myclient['suicideRate']\nmycol = mydb['suicideCollection']\nmycol.remove({"
         self.a = ""
@@ -545,6 +549,9 @@ class myDelete(Frame):
         file.write(t)
         file.close()
         os.system("python3 /Users/anish/Desktop/tkinter-gui-application-examples-master/components/bdaDelete2.py")
+
+        messagebox.showinfo("Delete", "Record Deleted Successfully")
+
 
 
     def init_page(self):
