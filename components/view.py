@@ -20,6 +20,7 @@ class MainPage():
 
     def open_page(self, frame_name, title):
         self.root.title(title)
+        self.root.configure(bg = 'cyan')
         if self.current_frame is not None and (hasattr(self.current_frame.destroy, '__call__')):
             self.current_frame.destroy()
 

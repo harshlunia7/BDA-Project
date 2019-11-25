@@ -14,7 +14,8 @@ class MainMenu:
             "create": frames.myCreate,
             "read": frames.myRead,
             "update": frames.myUpdate,
-            "delete": frames.myDelete
+            "delete": frames.myDelete,
+            "graphs": frames.myGraphs
         }
         self.init_menu()
 
@@ -29,6 +30,7 @@ class MainMenu:
         filemenu.add_command(label="Read", command=self.file_read)
         filemenu.add_command(label="Update", command=self.file_update)
         filemenu.add_command(label="Delete", command=self.file_delete)
+        filemenu.add_command(label="Gaphs", command=self.file_graph)
         filemenu.add_separator()
         filemenu.add_command(label="Exit", command=self.root.quit)
 
@@ -36,6 +38,7 @@ class MainMenu:
 
     def open_page(self, frame_name, title):
         self.root.title(title)
+        self.root.config(bg = 'cyan')
         if self.current_frame is not None and (hasattr(self.current_frame.destroy, '__call__')):
             self.current_frame.destroy()
 
@@ -53,4 +56,7 @@ class MainMenu:
 
     def file_delete(self):
         self.open_page("delete", "Delete")
+
+    def file_graph(self):
+        self.open_page("graphs", "Graphs")
 

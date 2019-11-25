@@ -6,6 +6,8 @@
       <change beforePath="$PROJECT_DIR$/components/bdaCreate2.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/bdaCreate2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/bdaDelete2.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/bdaDelete2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/frames.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/frames.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/view.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
