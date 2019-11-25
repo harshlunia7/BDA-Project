@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0b12cdf8-55b4-4b1d-8bd5-63ca6cb4c323" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Read.csv" beforeDir="false" afterPath="$PROJECT_DIR$/components/Read.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/bdaCreate2.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/bdaCreate2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/bdaRead2.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/bdaRead2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/frames.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/frames.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

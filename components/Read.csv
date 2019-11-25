@@ -1,2 +1,1 @@
-_id,country,year,sex,age,suicides_no,population,suicides/100kpop,country-year,gdp_for_year($),gdp_per_capita
-5dda8e83f84e3077dc40e658,India,1998,male,21,1000,200033400,1212,193,2323
+_id,country,year,sex,age,suicides_no,population,suicides/100kpop,gdp_for_year($),gdp_per_capita
